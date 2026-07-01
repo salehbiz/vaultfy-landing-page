@@ -1827,7 +1827,7 @@
       });
 
       // ============ FRAME CHECKER DEBUG SYSTEM ============
-      document.addEventListener('DOMContentLoaded', () => {
+      function initFrameChecker() {
         const chk = document.createElement('div');
         chk.id = 'frame-checker';
         chk.style.cssText = 'position:fixed; bottom:20px; right:20px; z-index:999999; background:rgba(8, 8, 10, 0.95); color:#EDE7DA; padding:12px 18px; font-family:"JetBrains Mono", monospace; border:1px solid #D4AF37; border-radius:6px; font-size:11px; box-shadow:0 8px 32px rgba(0,0,0,0.5); display:flex; flex-direction:column; gap:6px; user-select:none; cursor:pointer;';
@@ -1895,5 +1895,11 @@
         }
 
         requestAnimationFrame(updateChecker);
-      });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initFrameChecker);
+      } else {
+        initFrameChecker();
+      }
     
