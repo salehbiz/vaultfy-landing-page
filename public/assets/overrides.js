@@ -19,21 +19,21 @@
     
     // Night frame ranges configuration (1-indexed frame numbers matching webp filenames)
     window.nightRangesDesktop = {
-      residences: { start: 80, end: 119 },
-      horology: { start: 119, end: 217 },
-      events: { start: 217, end: 349 },
-      automotive: { start: 349, end: 471 },
-      yachts: { start: 471, end: 622 },
-      aviation: { start: 622, end: 760 }
+      residences: { start: 20, end: 30 },
+      horology: { start: 30, end: 54 },
+      events: { start: 54, end: 87 },
+      automotive: { start: 87, end: 118 },
+      yachts: { start: 118, end: 156 },
+      aviation: { start: 156, end: 190 }
     };
 
     window.nightRangesMobile = {
-      residences: { start: 48, end: 71 },
-      horology: { start: 71, end: 130 },
-      events: { start: 130, end: 209 },
-      automotive: { start: 209, end: 283 },
-      yachts: { start: 283, end: 373 },
-      aviation: { start: 373, end: 456 }
+      residences: { start: 12, end: 18 },
+      horology: { start: 18, end: 33 },
+      events: { start: 33, end: 52 },
+      automotive: { start: 52, end: 71 },
+      yachts: { start: 71, end: 93 },
+      aviation: { start: 93, end: 114 }
     };
 
     window.updateHeroRanges = function() {
@@ -46,7 +46,7 @@
       let newBc, newDs;
       if (isNight) {
         const ranges = isMobile ? window.nightRangesMobile : window.nightRangesDesktop;
-        const denom = isMobile ? 960 : 971;
+        const denom = isMobile ? 240 : 243;
         newBc = [
           { sel: "#chapter-residences", in: (ranges.residences.start - 1) / denom, out: (ranges.residences.end - 1) / denom },
           { sel: "#chapter-horology", in: (ranges.horology.start - 1) / denom, out: (ranges.horology.end - 1) / denom },
@@ -65,44 +65,45 @@
           { until: 1/0, label: "VII · Aviation" }
         ];
       } else {
-        // Day (original constants)
+        // Day (original constants divided by 4)
         if (isMobile) {
           newBc = [
-            { sel: "#chapter-residences", in: 48/480, out: 71/480 },
-            { sel: "#chapter-horology", in: 71/480, out: 130/480 },
-            { sel: "#chapter-events", in: 130/480, out: 209/480 },
-            { sel: "#chapter-automotive", in: 209/480, out: 283/480 },
-            { sel: "#chapter-yachts", in: 283/480, out: 373/480 },
-            { sel: "#chapter-aviation", in: 373/480, out: 0.95 }
+            { sel: "#chapter-residences", in: 12/120, out: 18/120 },
+            { sel: "#chapter-horology", in: 18/120, out: 33/120 },
+            { sel: "#chapter-events", in: 33/120, out: 52/120 },
+            { sel: "#chapter-automotive", in: 52/120, out: 71/120 },
+            { sel: "#chapter-yachts", in: 71/120, out: 93/120 },
+            { sel: "#chapter-aviation", in: 93/120, out: 0.95 }
           ];
           newDs = [
-            { until: 48/480, label: "I · Sky" },
-            { until: 71/480, label: "II · Residences" },
-            { until: 130/480, label: "III · Horology" },
-            { until: 209/480, label: "IV · Private Events" },
-            { until: 283/480, label: "V · Automotive" },
-            { until: 373/480, label: "VI · Yachts" },
+            { until: 12/120, label: "I · Sky" },
+            { until: 18/120, label: "II · Residences" },
+            { until: 33/120, label: "III · Horology" },
+            { until: 52/120, label: "IV · Private Events" },
+            { until: 71/120, label: "V · Automotive" },
+            { until: 93/120, label: "VI · Yachts" },
             { until: 1/0, label: "VII · Aviation" }
           ];
         } else {
           newBc = [
-            { sel: "#chapter-residences", in: 80/800, out: 119/800 },
-            { sel: "#chapter-horology", in: 119/800, out: 217/800 },
-            { sel: "#chapter-events", in: 217/800, out: 349/800 },
-            { sel: "#chapter-automotive", in: 349/800, out: 471/800 },
-            { sel: "#chapter-yachts", in: 471/800, out: 622/800 },
-            { sel: "#chapter-aviation", in: 622/800, out: 0.95 }
+            { sel: "#chapter-residences", in: 20/200, out: 30/200 },
+            { sel: "#chapter-horology", in: 30/200, out: 54/200 },
+            { sel: "#chapter-events", in: 54/200, out: 87/200 },
+            { sel: "#chapter-automotive", in: 87/200, out: 118/200 },
+            { sel: "#chapter-yachts", in: 118/200, out: 156/200 },
+            { sel: "#chapter-aviation", in: 156/200, out: 0.95 }
           ];
           newDs = [
-            { until: 80/800, label: "I · Sky" },
-            { until: 119/800, label: "II · Residences" },
-            { until: 217/800, label: "III · Horology" },
-            { until: 349/800, label: "IV · Private Events" },
-            { until: 471/800, label: "V · Automotive" },
-            { until: 622/800, label: "VI · Yachts" },
+            { until: 20/200, label: "I · Sky" },
+            { until: 30/200, label: "II · Residences" },
+            { until: 54/200, label: "III · Horology" },
+            { until: 87/200, label: "IV · Private Events" },
+            { until: 118/200, label: "V · Automotive" },
+            { until: 156/200, label: "VI · Yachts" },
             { until: 1/0, label: "VII · Aviation" }
           ];
         }
+      }
       
       // Update variables exposed by the JS bundle
       window.Bc.length = 0;

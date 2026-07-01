@@ -7584,8 +7584,8 @@ I.core = {
   },
 };
 cl() && z.registerPlugin(I);
-const vc = 800,
-  yc = 480,
+const vc = 200,
+  yc = 120,
   wc = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
   xc = () => window.matchMedia("(min-width: 1024px)").matches,
   bc = () => window.matchMedia("(pointer: fine)").matches,
