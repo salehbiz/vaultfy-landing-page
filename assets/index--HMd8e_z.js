@@ -8419,11 +8419,11 @@ var Ac = class {
 };
 function Dc(s) {
   const t = new Ac({
-    duration: 1.8,
+    duration: 2.2,
     easing: (i) => Math.min(1, 1.001 - Math.pow(2, -10 * i)),
     smoothWheel: !0,
-    wheelMultiplier: 0.82,
-    touchMultiplier: 1.5,
+    wheelMultiplier: 0.55,
+    touchMultiplier: 1.1,
     syncTouch: !0,
   });
   return (

@@ -122,7 +122,7 @@
         
         // Re-create the timeline
         const eyebrowLetters = Array.from(document.querySelectorAll("#zone-eyebrow .eyebrow span"));
-        window.Hc(window.activePlayer, { pinPxPerFrame: 4, eyebrowLetters: eyebrowLetters });
+        window.Hc(window.activePlayer, { pinPxPerFrame: 14, eyebrowLetters: eyebrowLetters });
 
         // Re-initialize services animation on the new timeline!
         if (typeof window.initServicesAnimation === 'function') {
