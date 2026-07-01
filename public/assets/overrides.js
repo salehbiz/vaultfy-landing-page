@@ -1,3 +1,18 @@
+    if (history.scrollRestoration) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+    window.addEventListener('beforeunload', () => {
+      window.scrollTo(0, 0);
+    });
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        if (window.__lenis) {
+          window.__lenis.scrollTo(0, { immediate: true });
+        }
+      }, 0);
+    });
 
     window.currentTheme = "day";
     let heroTrigger = null;
