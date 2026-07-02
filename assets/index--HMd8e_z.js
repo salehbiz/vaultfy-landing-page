@@ -8894,6 +8894,7 @@ function Hc(s, t) {
       },
     },
   });
+  window.heroTimeline = T;
   (T.to(
     x,
     { f: r, ease: "none", duration: 1, onUpdate: () => s.drawAt(x.f) },
@@ -8934,6 +8935,7 @@ function Hc(s, t) {
       .to(a, { opacity: 0, duration: 0.01 }, 0.055),
     Bc.forEach((v) => Wc(T, v)),
     T.to(l, { opacity: 1, y: 0, duration: 0.05, ease: "power2.out" }, Yc));
+  return T;
 }
 const En = [
   {
@@ -9213,7 +9215,9 @@ async function jc(s, t) {
   const r = kl(!1);
   t.cursor && Lc();
   const n = Fc();
-  (Hc(i, { pinPxPerFrame: $c, eyebrowLetters: n }),
+  (window.activePlayer = i,
+    window.activeConfig = s,
+    Hc(i, { pinPxPerFrame: $c, eyebrowLetters: n }),
     Cl(!1),
     El(!1),
     Ol({ reduced: !1, marqueeLoops: r }),
@@ -9232,4 +9236,9 @@ async function Jc() {
     : await jc(t, { cursor: !s && bc(), smooth: !s }),
     window.addEventListener("load", () => I.refresh()));
 }
+window.Bc = Bc;
+window.ds = ds;
+window.Hc = Hc;
+window.gsap = L;
+window.ScrollTrigger = I;
 Jc();

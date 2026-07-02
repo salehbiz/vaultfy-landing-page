@@ -19,21 +19,19 @@
     
     // Night frame ranges configuration (1-indexed frame numbers matching webp filenames)
     window.nightRangesDesktop = {
-      residences: { start: 20, end: 30 },
-      horology: { start: 30, end: 54 },
-      events: { start: 54, end: 87 },
-      automotive: { start: 87, end: 118 },
-      yachts: { start: 118, end: 156 },
-      aviation: { start: 156, end: 190 }
+      residences: { start: 19, end: 31 },
+      horology: { start: 31, end: 54 },
+      events: { start: 54, end: 75 },
+      yachts: { start: 110, end: 121 },
+      aviation: { start: 121, end: 129 }
     };
 
     window.nightRangesMobile = {
-      residences: { start: 12, end: 18 },
-      horology: { start: 18, end: 33 },
-      events: { start: 33, end: 52 },
-      automotive: { start: 52, end: 71 },
-      yachts: { start: 71, end: 93 },
-      aviation: { start: 93, end: 114 }
+      residences: { start: 11, end: 19 },
+      horology: { start: 19, end: 32 },
+      events: { start: 32, end: 45 },
+      yachts: { start: 66, end: 73 },
+      aviation: { start: 73, end: 77 }
     };
 
     window.updateHeroRanges = function() {
@@ -46,61 +44,55 @@
       let newBc, newDs;
       if (isNight) {
         const ranges = isMobile ? window.nightRangesMobile : window.nightRangesDesktop;
-        const denom = isMobile ? 240 : 243;
+        const denom = isMobile ? 120 : 200;
         newBc = [
           { sel: "#chapter-residences", in: (ranges.residences.start - 1) / denom, out: (ranges.residences.end - 1) / denom },
           { sel: "#chapter-horology", in: (ranges.horology.start - 1) / denom, out: (ranges.horology.end - 1) / denom },
           { sel: "#chapter-events", in: (ranges.events.start - 1) / denom, out: (ranges.events.end - 1) / denom },
-          { sel: "#chapter-automotive", in: (ranges.automotive.start - 1) / denom, out: (ranges.automotive.end - 1) / denom },
           { sel: "#chapter-yachts", in: (ranges.yachts.start - 1) / denom, out: (ranges.yachts.end - 1) / denom },
-          { sel: "#chapter-aviation", in: (ranges.aviation.start - 1) / denom, out: 0.95 }
+          { sel: "#chapter-aviation", in: (ranges.aviation.start - 1) / denom, out: (ranges.aviation.end - 1) / denom }
         ];
         newDs = [
           { until: (ranges.residences.start - 1) / denom, label: "I · Sky" },
           { until: (ranges.residences.end - 1) / denom, label: "II · Residences" },
           { until: (ranges.horology.end - 1) / denom, label: "III · Horology" },
           { until: (ranges.events.end - 1) / denom, label: "IV · Private Events" },
-          { until: (ranges.automotive.end - 1) / denom, label: "V · Automotive" },
-          { until: (ranges.yachts.end - 1) / denom, label: "VI · Yachts" },
-          { until: 1/0, label: "VII · Aviation" }
+          { until: (ranges.yachts.end - 1) / denom, label: "V · Yachts" },
+          { until: 1/0, label: "VI · Private Jets" }
         ];
       } else {
         // Day (original constants divided by 4)
         if (isMobile) {
           newBc = [
-            { sel: "#chapter-residences", in: 12/120, out: 18/120 },
-            { sel: "#chapter-horology", in: 18/120, out: 33/120 },
-            { sel: "#chapter-events", in: 33/120, out: 52/120 },
-            { sel: "#chapter-automotive", in: 52/120, out: 71/120 },
-            { sel: "#chapter-yachts", in: 71/120, out: 93/120 },
-            { sel: "#chapter-aviation", in: 93/120, out: 0.95 }
+            { sel: "#chapter-residences", in: 11/120, out: 19/120 },
+            { sel: "#chapter-horology", in: 19/120, out: 32/120 },
+            { sel: "#chapter-events", in: 32/120, out: 45/120 },
+            { sel: "#chapter-yachts", in: 66/120, out: 73/120 },
+            { sel: "#chapter-aviation", in: 73/120, out: 77/120 }
           ];
           newDs = [
-            { until: 12/120, label: "I · Sky" },
-            { until: 18/120, label: "II · Residences" },
-            { until: 33/120, label: "III · Horology" },
-            { until: 52/120, label: "IV · Private Events" },
-            { until: 71/120, label: "V · Automotive" },
-            { until: 93/120, label: "VI · Yachts" },
-            { until: 1/0, label: "VII · Aviation" }
+            { until: 11/120, label: "I · Sky" },
+            { until: 19/120, label: "II · Residences" },
+            { until: 32/120, label: "III · Horology" },
+            { until: 66/120, label: "IV · Private Events" },
+            { until: 73/120, label: "V · Yachts" },
+            { until: 1/0, label: "VI · Private Jets" }
           ];
         } else {
           newBc = [
-            { sel: "#chapter-residences", in: 20/200, out: 30/200 },
-            { sel: "#chapter-horology", in: 30/200, out: 54/200 },
-            { sel: "#chapter-events", in: 54/200, out: 87/200 },
-            { sel: "#chapter-automotive", in: 87/200, out: 118/200 },
-            { sel: "#chapter-yachts", in: 118/200, out: 156/200 },
-            { sel: "#chapter-aviation", in: 156/200, out: 0.95 }
+            { sel: "#chapter-residences", in: 19/200, out: 31/200 },
+            { sel: "#chapter-horology", in: 31/200, out: 54/200 },
+            { sel: "#chapter-events", in: 54/200, out: 75/200 },
+            { sel: "#chapter-yachts", in: 110/200, out: 121/200 },
+            { sel: "#chapter-aviation", in: 121/200, out: 129/200 }
           ];
           newDs = [
-            { until: 20/200, label: "I · Sky" },
-            { until: 30/200, label: "II · Residences" },
+            { until: 19/200, label: "I · Sky" },
+            { until: 31/200, label: "II · Residences" },
             { until: 54/200, label: "III · Horology" },
-            { until: 87/200, label: "IV · Private Events" },
-            { until: 118/200, label: "V · Automotive" },
-            { until: 156/200, label: "VI · Yachts" },
-            { until: 1/0, label: "VII · Aviation" }
+            { until: 110/200, label: "IV · Private Events" },
+            { until: 121/200, label: "V · Yachts" },
+            { until: 1/0, label: "VI · Private Jets" }
           ];
         }
       }
@@ -1289,19 +1281,19 @@
         }
 
         function startChatSimulation() {
-          // Step 1: User request (1.0s)
+          // Step 1: User request (0.4s)
           setTimeout(() => {
             const row = createMessageRow('user', '<p style="margin:0;">Alfred, I need a G650 from London to Dubai this Friday. 4 passengers, departing 9 AM.</p>');
             appendRow(row);
-          }, 1000);
+          }, 400);
 
-          // Step 2: Typing dots (2.5s)
+          // Step 2: Typing dots (0.9s)
           setTimeout(() => {
             const row = createMessageRow('typing');
             appendRow(row);
-          }, 2500);
+          }, 900);
 
-          // Step 3: Alfred response 1 (4.0s)
+          // Step 3: Alfred response 1 (1.4s)
           setTimeout(() => {
             removeTypingRow();
             const row = createMessageRow('alfred', `
@@ -1312,9 +1304,9 @@
               </div>
             `);
             appendRow(row);
-          }, 4000);
+          }, 1400);
 
-          // Step 4: Alfred response 2 (6.5s)
+          // Step 4: Alfred response 2 (2.4s)
           setTimeout(() => {
             const row = createMessageRow('alfred', `
               <div style="width: 100%;">
@@ -1348,21 +1340,21 @@
               </div>
             `);
             appendRow(row);
-          }, 6500);
+          }, 2400);
 
-          // Step 5: User confirmation (10.0s)
+          // Step 5: User confirmation (3.8s)
           setTimeout(() => {
             const row = createMessageRow('user', '<p style="margin:0;">Yes, confirm the Global 7500 and charge my card.</p>');
             appendRow(row);
-          }, 10000);
+          }, 3800);
 
-          // Step 6: Typing dots (11.0s)
+          // Step 6: Typing dots (4.2s)
           setTimeout(() => {
             const row = createMessageRow('typing');
             appendRow(row);
-          }, 11000);
+          }, 4200);
 
-          // Step 7: Alfred final set (12.5s)
+          // Step 7: Alfred final set (4.7s)
           setTimeout(() => {
             removeTypingRow();
             const row = createMessageRow('alfred', `
@@ -1379,9 +1371,9 @@
               </div>
             `);
             appendRow(row);
-          }, 12500);
+          }, 4700);
 
-          // Step 8: Button & Footer fade-in (13.0s)
+          // Step 8: Button & Footer fade-in (5.0s)
           setTimeout(() => {
             const completeContainer = document.createElement('div');
             completeContainer.className = 'complete-btn-container';
@@ -1405,7 +1397,7 @@
             setTimeout(() => {
               completeContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }, 50);
-          }, 13000);
+          }, 5000);
         }
       });
 
@@ -1869,7 +1861,7 @@
           chkScroll.textContent = `${scrollY}px`;
 
           if (window.ScrollTrigger) {
-            if (!lastHeroTrigger) {
+            if (!lastHeroTrigger || !window.ScrollTrigger.getAll().includes(lastHeroTrigger)) {
               const heroEl = document.getElementById('hero');
               if (heroEl) {
                 lastHeroTrigger = window.ScrollTrigger.getAll().find(t => t.trigger === heroEl);
